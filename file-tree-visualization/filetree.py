@@ -18,6 +18,12 @@ MERMAID_ILLEGAL_PHRASES = ["top"]
 MERMAID_REPLACEMENT_CHARACTER = "_"
 
 
+# OBSIDIANDASH CONFIGURATION
+# list of obsidian file types:
+OBSIDIAN_FILE_EXTENSIONS = ["md", "png", "webp", "jpg", "jpeg", "gif", "bmp", "svg", "mp3", "webm", "wav", "m4a", "ogg", "3gp", "flac", "mp4", "webm", "ogv", "mov", "mkv", "pdf"]
+# limit mode to obsidian known types?
+OBSIDIAN_IGNORE_UNKNOWN = True
+
 # OUTPUT CONFIGURATION
 def preprint():
     """ADD EXTRA LINES HERE FOR THINGS TO ADD BEFORE THINGS"""
@@ -46,7 +52,7 @@ output_type = sys.argv[2] if len(sys.argv) >= 3 else ""
 
 # which outputs do we have?
 # dash, mermaid, cmdtree?
-OUTPUT_TYPES = ["dash", "mermaid", "obsidiandash"]
+OUTPUT_TYPES = ["dash", "mermaid", "obsidiandash", "obsidian"]
 
 # as we use backslash in path to display depth, we need to cut off a few of them when outputting the pretty
 negate_depth = 0
@@ -94,7 +100,17 @@ def output(root, item=""):
             if not item:
                 print("-"*depth + root)
             else:
-                print("-"*(depth+1) + "[[" + item + "]]")
+                if len(item.split(".")) > 1:
+                    if item.split(".")[-1] in OBSIDIAN_FILE_EXTENSIONS or not OBSIDIAN_IGNORE_UNKNOWN:
+                        print("-"*(depth+1) + "[[" + item + "]]")
+ 
+        case "obsidian":
+            if not item:
+                print("#"*(depth+1) + " " + root)
+            else:
+                if len(item.split(".")) > 1:
+                    if item.split(".")[-1] in OBSIDIAN_FILE_EXTENSIONS or not OBSIDIAN_IGNORE_UNKNOWN:
+                        print("- [[" + item + "]]")
 
         case "mermaid":
             # if we only get a directoy, we add it with pretty name
@@ -103,7 +119,7 @@ def output(root, item=""):
                 item_name = root.split("\\")[-1]
                 print(f"{item_id}[\"{item_name}\"];")
             else:
-                # if we get a directory and a item, we link directory and itemwith pretty name
+                # if we get a directory and a item, we link directory and item with pretty name
                 # if the item is a directory, the next round it will be created again, creating duplicates
                 # we'll let mermaid deal with that *shrug*
                 root_id = mermaid_legalize(root)
