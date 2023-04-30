@@ -1,18 +1,19 @@
 give it a path, receive a file/folder tree in a fancy format
-maybe do cool stuff in python, some one-liner in powershell?
 
 # filetree.py
+shows a full folder directory in indented or mermaid style. there's probably a bunch of edge cases with characters and naming that needs to be taken care of
+
 ## using filetree.py
 reqires some recent version of python.  build for full windows paths (uses backslash). Modes are "dash" and "mermaid"
 - launch file directly, it should ask you about specifics
 - python filetree.py PATH TYPE
 
 ## configure
-edit filetree.py for defining ignored folders or how to behave on "hidden files"
+edit filetree.py for defining ignored folders or how to behave on dot-prefixed "hidden files"
 
 ## examples
 ### show tinytools directory in dash style
-> `python filetree.py "a:\git\tinytools" dash`
+> python filetree.py "a:\git\tinytools" dash
 
 output:
 ```
@@ -25,7 +26,7 @@ a:\git\tinytools
 ```
 
 ### show tinytools directory in mermaid style
-> `python filetree.py "a:\git\tinytools" mermaid`
+> python filetree.py "a:\git\tinytools" mermaid
 
 output:
 ```
