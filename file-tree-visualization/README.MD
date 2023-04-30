@@ -4,11 +4,19 @@ give it a path, receive a file/folder tree in a fancy format
 shows a full folder directory in indented or mermaid style. there's probably a bunch of edge cases with characters and naming that needs to be taken care of
 
 ## using filetree.py
-reqires some recent version of python.  build for full windows paths (uses backslash). Modes are "dash" and "mermaid"
+reqires some recent version of python.  build for full windows paths (uses backslash). 
 - launch file directly, it should ask you about specifics
-- python filetree.py PATH TYPE
+- python filetree.py PATH MODE
 - protip: can uses stdout so it can be piped to file with "> filename"
 - protip2: piping to .md file in obsidian sounds great until encoding comes and ruins it
+
+## modes
+output modes for different use cases:
+- dash: indents using a dash
+- mermaid: creates a full mermaid graph
+- obsidian: only shows files that obsidian can read, folders are headers at their according level, files are linked
+- obsidiandash: same as above but without headers, just dash indent
+
 
 ## configure
 edit filetree.py for defining ignored folders or how to behave on dot-prefixed "hidden files"
