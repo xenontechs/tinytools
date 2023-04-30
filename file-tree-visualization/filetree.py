@@ -46,7 +46,7 @@ output_type = sys.argv[2] if len(sys.argv) >= 3 else ""
 
 # which outputs do we have?
 # dash, mermaid, cmdtree?
-OUTPUT_TYPES = ["dash", "mermaid"]
+OUTPUT_TYPES = ["dash", "mermaid", "obsidiandash"]
 
 # as we use backslash in path to display depth, we need to cut off a few of them when outputting the pretty
 negate_depth = 0
@@ -89,6 +89,13 @@ def output(root, item=""):
                 print("-"*depth + root)
             else:
                 print("-"*(depth+1) + item)
+ 
+        case "obsidiandash":
+            if not item:
+                print("-"*depth + root)
+            else:
+                print("-"*(depth+1) + "[[" + item + "]]")
+
         case "mermaid":
             # if we only get a directoy, we add it with pretty name
             if not item:
