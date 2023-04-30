@@ -50,3 +50,9 @@ a__git_tinytools_file_tree_visualization --> a__git_tinytools_file_tree_visualiz
 a__git_tinytools_file_tree_visualization --> a__git_tinytools_file_tree_visualization_README.MD["README.MD"];
 ```_
 ```
+
+## shortcomings
+- bound to windows OS (as far as I tried, but there's lots of backslash)
+- no output to file, and piping to file may be weird encoding
+- ^this should be fixed with a custon print function that directs, encodes, ...
+- it always shows full path, not a cut off from where you start
