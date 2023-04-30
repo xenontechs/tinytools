@@ -7,6 +7,8 @@ shows a full folder directory in indented or mermaid style. there's probably a b
 reqires some recent version of python.  build for full windows paths (uses backslash). Modes are "dash" and "mermaid"
 - launch file directly, it should ask you about specifics
 - python filetree.py PATH TYPE
+- protip: can uses stdout so it can be piped to file with "> filename"
+- protip2: piping to .md file in obsidian sounds great until encoding comes and ruins it
 
 ## configure
 edit filetree.py for defining ignored folders or how to behave on dot-prefixed "hidden files"
