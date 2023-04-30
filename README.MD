@@ -8,3 +8,8 @@ the solution: python os.walk() wrapper that formats for mermaid.js, linked markd
 the problem: OBS brings a lot for audio configuration pipeline but cannot save as audio file, so there was a need to extract audio from video files
 
 the solution: a batch file that uses ffmpeg to extract audio tracks on the spot (literally drag&drop if configured properly, otherwise a very simple script)
+
+# WindowTitleMon
+the problem: many apps are now placing tabs into the space where previously a title bar was displayed. 
+
+the solution: a digital monster that is trained to pursue such applications and terminates them by eating their files.
